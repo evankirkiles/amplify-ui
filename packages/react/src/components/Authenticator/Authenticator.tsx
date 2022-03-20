@@ -50,6 +50,7 @@ export function Authenticator({
   variation,
   hideSignUp,
   formFields,
+  transitionTimeOut,
 }: AuthenticatorProps) {
   const components = { ...defaultComponents, ...customComponents };
   const machineProps = {
@@ -70,6 +71,7 @@ export function Authenticator({
             children={children}
             variation={variation}
             hideSignUp={hideSignUp}
+            transitionTimeOut={transitionTimeOut}
           />
         </InitMachine>
       </CustomComponentsContext.Provider>

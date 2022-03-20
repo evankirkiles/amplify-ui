@@ -65,7 +65,8 @@
     "deepmerge": "4.2.2",
     "lodash": "4.17.21",
     "qrcode": "1.5.0",
-    "react-generate-context": "1.0.1"
+    "react-generate-context": "1.0.1",
+    "react-transition-group": "^4.4.2"
   },
   "peerDependencies": {
     "aws-amplify": "3.x.x || 4.x.x",
@@ -79,6 +80,7 @@
     "@testing-library/react-hooks": "^7.0.1",
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^26.0.23",
+    "@types/react-transition-group": "^4.4.4",
     "@types/testing-library__jest-dom": "^5.14.1",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
