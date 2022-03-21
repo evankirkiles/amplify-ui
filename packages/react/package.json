@@ -1,6 +1,6 @@
 {
-  "name": "@aws-amplify/ui-react",
-  "version": "2.10.3",
+  "name": "@evankirkiles/amplify-ui-react",
+  "version": "2.10.4",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "exports": {
@@ -26,7 +26,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aws-amplify/amplify-ui",
+    "url": "https://github.com/evankirkiles/amplify-ui",
     "directory": "packages/react"
   },
   "files": [

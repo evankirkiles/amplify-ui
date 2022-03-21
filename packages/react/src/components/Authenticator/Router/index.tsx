@@ -77,10 +77,12 @@ export function Router({
 
             <View
               data-amplify-router=""
-              data-amplify-router-content={hasTabs(route) ? undefined : ''}
+              data-amplify-router-content={
+                hasTabs(displayRoute) ? undefined : ''
+              }
             >
               {(() => {
-                switch (route) {
+                switch (displayRoute) {
                   case 'idle':
                   case 'setup':
                     return null;
@@ -107,7 +109,7 @@ export function Router({
                   default:
                     console.warn(
                       'Unhandled Authenicator route – please open an issue: ',
-                      route
+                      displayRoute
                     );
 
                     return null;
