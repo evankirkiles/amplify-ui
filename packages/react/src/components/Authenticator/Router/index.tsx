@@ -11,7 +11,7 @@ import { ConfirmVerifyUser, VerifyUser } from '../VerifyUser';
 import { ConfirmSignIn } from '../ConfirmSignIn/ConfirmSignIn';
 import { ConfirmResetPassword, ResetPassword } from '../ResetPassword';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 export type RouterProps = {
@@ -48,6 +48,14 @@ export function Router({
   // Add smooth css transitions between routes
   const routeTransitionRef = useRef<HTMLDivElement>(null);
   const [displayRoute, setDisplayRoute] = useState(route);
+  useEffect(() => {
+    if (
+      ['authenticated', 'signOut'].includes(displayRoute) &&
+      route !== displayRoute
+    ) {
+      setDisplayRoute(route);
+    }
+  }, [route, displayRoute, setDisplayRoute]);
 
   // `Authenticator` might not have `children` for non SPA use cases.
   if (['authenticated', 'signOut'].includes(displayRoute)) {
@@ -56,26 +64,25 @@ export function Router({
 
   return (
     <>
-      <CSSTransition
-        appear
-        in={displayRoute === route}
-        timeout={transitionTimeOut || 0}
-        nodeRef={routeTransitionRef}
-        classNames={'route'}
-        onExited={() => {
-          setDisplayRoute(route);
-        }}
+      <View
+        className={className}
+        data-amplify-authenticator=""
+        data-variation={variation}
       >
-        <View
-          className={className}
-          data-amplify-authenticator=""
-          data-variation={variation}
-          ref={routeTransitionRef}
-        >
-          <View data-amplify-container="">
-            <Header />
-
+        <View data-amplify-container="">
+          <Header />
+          <CSSTransition
+            appear
+            in={displayRoute === route}
+            timeout={transitionTimeOut || 0}
+            nodeRef={routeTransitionRef}
+            classNames={'route'}
+            onExited={() => {
+              setDisplayRoute(route);
+            }}
+          >
             <View
+              ref={routeTransitionRef}
               data-amplify-router=""
               data-amplify-router-content={
                 hasTabs(displayRoute) ? undefined : ''
@@ -94,7 +101,12 @@ export function Router({
                     return <SetupTOTP />;
                   case 'signIn':
                   case 'signUp':
-                    return <SignInSignUpTabs hideSignUp={hideSignUp} />;
+                    return (
+                      <SignInSignUpTabs
+                        hideSignUp={hideSignUp}
+                        route={displayRoute}
+                      />
+                    );
                   case 'forceNewPassword':
                     return <ForceNewPassword />;
                   case 'resetPassword':
@@ -116,11 +128,11 @@ export function Router({
                 }
               })()}
             </View>
+          </CSSTransition>
 
-            <Footer />
-          </View>
+          <Footer />
         </View>
-      </CSSTransition>
+      </View>
     </>
   );
 }

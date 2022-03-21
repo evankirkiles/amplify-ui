@@ -6,7 +6,7 @@
     "setup": "yarn install && yarn build",
     "refresh": "yarn clean && yarn setup",
     "angular": "yarn workspace @aws-amplify/ui-angular",
-    "react": "yarn workspace @aws-amplify/ui-react",
+    "react": "yarn workspace @evankirkiles/amplify-ui-react",
     "ui": "yarn workspace @aws-amplify/ui",
     "vue": "yarn workspace @aws-amplify/ui-vue",
     "angular-example": "yarn workspace angular-example",

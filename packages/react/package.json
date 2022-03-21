@@ -1,6 +1,6 @@
 {
   "name": "@evankirkiles/amplify-ui-react",
-  "version": "2.10.4",
+  "version": "2.10.6",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "exports": {

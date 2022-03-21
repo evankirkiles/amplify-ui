@@ -7,10 +7,12 @@ import { SignUp } from '../SignUp';
 
 export const SignInSignUpTabs = ({
   hideSignUp,
+  route,
 }: {
   hideSignUp: boolean;
+  route: string;
 }): JSX.Element => {
-  const { route, toSignIn, toSignUp } = useAuthenticator();
+  const { toSignIn, toSignUp } = useAuthenticator();
   return (
     <>
       {hideSignUp ? (
