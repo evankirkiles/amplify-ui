@@ -50,8 +50,11 @@ export function Router({
   const [displayRoute, setDisplayRoute] = useState(route);
   useEffect(() => {
     if (
-      ['authenticated', 'signOut'].includes(displayRoute) &&
-      route !== displayRoute
+      (['idle', 'setup', 'authenticated', 'signOut'].includes(displayRoute) &&
+        route !== displayRoute) ||
+      (displayRoute !== route &&
+        ['signIn', 'signUp'].includes(displayRoute) &&
+        ['signIn', 'signUp'].includes(route))
     ) {
       setDisplayRoute(route);
     }
